@@ -11,10 +11,10 @@
 
 ## 입출력 예
 
-|s|answer|
-|--|--|
-|"pPoooyY"|true|
-|"Pyy"|false|
+| s         | answer |
+| --------- | ------ |
+| "pPoooyY" | true   |
+| "Pyy"     | false  |
 
 ### 설명
 
@@ -33,11 +33,12 @@
 
 Javascript
 
-### 최종 코드
+### 제출 코드
+
 ```
 function solution(s){
     let count = [0, 0]
-    
+
     for (const i of s.toLowerCase().split("")) {
         if (i === "p") {
             count[0] += 1

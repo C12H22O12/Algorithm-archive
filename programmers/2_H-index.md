@@ -13,9 +13,9 @@ H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 
 
 ## 입출력 예
 
-|citations|return|
-|--|--|
-|[3, 0, 6, 1, 5]|3|
+| citations       | return |
+| --------------- | ------ |
+| [3, 0, 6, 1, 5] | 3      |
 
 이 과학자가 발표한 논문의 수는 5편이고, 그중 3편의 논문은 3회 이상 인용되었습니다. 그리고 나머지 2편의 논문은 3회 이하 인용되었기 때문에 이 과학자의 H-Index는 3입니다.
 <br />
@@ -28,16 +28,17 @@ H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 
 
 Javascript
 
-### 최종 코드
+### 제출 코드
+
 ```
 function solution(citations) {
     let answer = 0;
     citations.sort((a,b) => b-a);
-    
+
     for (let i = 0; i<citations.length; i++) {
         if (i<citations[i]) answer++;
     }
-    
+
     return answer;
 }
 ```
