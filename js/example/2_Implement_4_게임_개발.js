@@ -1,3 +1,4 @@
+// 24.00.00
 const game = (N, M, character, map) => { // 내 방식 -> BFS 방식(queue) 이용
     const [x, y, d] = character.split(' ').map(e => Number(e))
     const DIRECTION = {
@@ -53,6 +54,47 @@ const game = (N, M, character, map) => { // 내 방식 -> BFS 방식(queue) 이�
 
     return res
 }
+
+// 25.03.17
+const [N, M] = [4, 4]
+const [a, b, d] = [1, 1, 0]
+const MAP = [[1, 1, 1, 1],
+             [1, 0, 0, 1],
+             [1, 1, 0, 1],
+             [1, 1, 1, 1]]
+
+const SEA = 1;
+const LAND = 0;
+const VISITED = 2;
+
+const DIRECTION = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+const len = DIRECTION.length
+let towardIdx = d
+
+const moving = (y, x, cnt) => {
+    MAP[y][x] = VISITED
+
+    for (let i = 0; i < len; i++) {
+        towardIdx = (towardIdx + 1) % len
+        
+        const [dy, dx] = DIRECTION[towardIdx]
+        const r = dy + y
+        const c = dx + x
+
+        if (0 <= r && r < N && 0 <= c && c < M && MAP[r][c] === LAND) {
+            return moving(r, c, cnt + 1)
+        }
+    }
+
+    const [dby, dbx] = DIRECTION[towardIdx]
+    const by = dby + y
+    const bx = dbx + x
+    
+    if (0 <= by && by < N && 0 <= bx && bx < M && MAP[by][bx] !== SEA) return moving(by, bx, cnt + 1)
+    return cnt
+}
+
+console.log(moving(a, b, 1))
 
 /*
 function game(N, M, character, map) { // 책의 파이썬 코드를 js 코드로 변환 -> DFS 방식 이용
