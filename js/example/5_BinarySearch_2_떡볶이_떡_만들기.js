@@ -9,7 +9,7 @@ const sum = (mid) => {
     return [...heights].filter((height) => height > mid).map((h) => h - mid).reduce((acc, cur) => acc + cur)
 }
 
-let start = heights[0];
+let start = 0;
 let end = heights[N - 1];
 let mid = 0;
 
